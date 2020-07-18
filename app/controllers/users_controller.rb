@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
   def create
-    user = User.new
-    user.email = params[:email]
-    user.password = params[:password]
-    user.password_confirmation = params[:password_confirmation]
-    if user.save
-      render json: {user: {email: user.email}}, status: 200
+    render_resource User.create(create_params)
+  end
+
+  def create_params
+    params.permit(:email, :password, :password_confirmation)
+  end
+
+  def render_resource(resource)
+    if resource.errors.empty?
+      render json: {msg: "success", resource: {email: resource.email}}, status: 200
     else
-      render json: {errors: user.errors}, status: 400
+      render json: {errors: resource.errors}, status: 400
     end
   end
 end
