@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::API
-  include ActionView::Layouts
+  # include ActionView::Layouts
 end
