@@ -6,7 +6,7 @@
 
 .idea
 morney-demo-data
-
+*.local
 # Ignore bundler config.
 /.bundle
 
