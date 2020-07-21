@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
   def create
-    session = Session.new create_params
-    session.validate
-    render_resource session
+    s = Session.new create_params
+    s.validate
+    render_resource s
+    session[:current_user_id] = s.user.id
   end
 
   def destroy
