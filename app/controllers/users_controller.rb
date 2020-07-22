@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def render_resource(resource)
+    return head 404 if resource.nil?
     if resource.errors.empty?
       render json: {msg: "success", resource: {email: resource.email}}, status: 200
     else
