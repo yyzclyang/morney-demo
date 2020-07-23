@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   # post '/users', to: 'users#create'
   # delete '/users/:id', to: 'users#destroy'
   # patch '/users/:id', to: 'users#update'
-  resource :sessions, only: [:create, :destroy]
+
+  resource :sessions, only: [:create]
+  delete '/sessions', to: 'sessions#destroy'
 end
