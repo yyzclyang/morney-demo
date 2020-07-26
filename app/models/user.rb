@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # password 的检测 has_secure_password 做了
   validates_presence_of :password_confirmation, on: [:create]
 
-  validates_format_of :email, with: /.+@.+/, if: :email
+  validates_format_of :email, with: /.+@.+/, if: Proc.new { |u| u.email.present? }
   validates_length_of :password, minimum: 6, on: [:create], if: :password
 
   after_create :send_welcome_email
