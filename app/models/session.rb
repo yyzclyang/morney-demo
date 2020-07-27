@@ -3,10 +3,10 @@ class Session
   attr_accessor :email, :password, :user
 
   validates :email, presence: true
-  validate :check_email if :email
+  validate :check_email, if: Proc.new { |s| s.email.present? }
   validates :password, presence: true
 
-  validates_format_of :email, with: /.+@.+/, if: :email
+  validates_format_of :email, with: /.+@.+/, if: Proc.new { |s| s.email.present? }
   validates_length_of :password, minimum: 6, if: :password
   validate :email_password_match, if: Proc.new { |s| s.email.present? and s.password.present? }
 
