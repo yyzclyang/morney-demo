@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     s = Session.new create_params
     s.validate
     render_resource s
-    session[:current_user_id] = s.user.id
+    session[:current_user_id] = s.user.id if s.user.present?
   end
 
   def destroy
