@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     if resource.errors.empty?
       render json: {msg: "success", resource: {email: resource.email}}, status: 200
     else
-      render json: {errors: resource.errors}, status: 400
+      render json: {errors: resource.errors}, status: 422
     end
   end
 end
