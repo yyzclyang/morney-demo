@@ -27,3 +27,10 @@ zh-CN:
             password_confirmation:
               blank: 确认密码不能为空
               confirmation: 两次密码不匹配
+        record:
+          attributes:
+            amount:
+              blank: 金额不能为空
+              not_an_integer: 金额类型错误
+            category:
+              blank: 类型不能为空
