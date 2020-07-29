@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sessions API</title>
+    <title>Records API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,12 +106,47 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Sessions API</h1>
+      <h1>Records API</h1>
 
       <div class="article">
-        <h2>用户注销</h2>
-        <h3>DELETE /sessions</h3>
+        <h2>创建账目记录</h2>
+        <h3>POST /records</h3>
 
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="required">
+                    <span class="name">amount</span>
+                </td>
+                <td>
+                  <span class="description">金额</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">category</span>
+                </td>
+                <td>
+                  <span class="description">类型: outgoings | income</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">notes</span>
+                </td>
+                <td>
+                  <span class="description">备注</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
 
           <h3>Request</h3>
@@ -121,15 +156,16 @@ table th, table td {
 Cookie: </pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">DELETE /sessions</pre>
+          <pre class="request route highlight">POST /records</pre>
 
 
+            <h4>Body</h4>
+            <pre class="request body">{"amount":100,"category":"outgoings","notes":"吃饭"}</pre>
 
 
             <h3>Response</h3>
               <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json; charset=utf-8
-Set-Cookie: _morney_session_id=YghXl24y4xu1QNFJtjgdY90S36nqaNDJi%2FTS3wx8WZiTSBbhRIXoDQo9AtuZVNRKPuYqVgK8txWu95VH2Zx5TMhcjLXp5FSrgCvwIXD7e1zPxLx0xatptExkNzjSS0I4DnE8b%2BCQGwJU8u3uVMf3Me8O14qXhKcXEXoDJjdZBeIwg6NhhSpXXJgzaaHjx9I7nwxSlbL21FKfFA%3D%3D--t8pNWGAciGZvIv7d--es%2BkFKwuN12bMH0%2BQ8MfwA%3D%3D; path=/; HttpOnly</pre>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
