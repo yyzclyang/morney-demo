@@ -18,6 +18,11 @@ RSpec.describe Record, type: :model do
     record = Record.create amount: 100, notes: '吃饭'
     expect(record.errors.details[:category]).to include({:error => :blank})
   end
+  it '创建 record 时 category 必须为指定的值' do
+    expect {
+      Record.create amount: 100, category: 'xx', notes: '吃饭'
+    }.to raise_error(ArgumentError)
+  end
   it '创建 record 可以忽略 notes' do
     record = Record.create amount: 100, category: 'outgoings'
     expect(record.errors.empty?).to be true
