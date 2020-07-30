@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   def create
+    must_sign_in
     record = Record.create(create_params)
     render_resource record
   end

@@ -38,7 +38,12 @@ module SpecTestHelper
     post '/users', params: {email: email, password: password, password_confirmation: password_confirmation}
   end
 
-  def sign_in(email, password)
+  def sign_in(email = nil, password = nil)
+    if email.nil? or password.nil?
+      email ||= 'spec_test_helper@qq.com'
+      password ||= '123456'
+      sign_up email, password, password
+    end
     post '/sessions', params: {email: email, password: password}
   end
 end
