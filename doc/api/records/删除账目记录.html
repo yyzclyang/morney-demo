@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sessions API</title>
+    <title>Records API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,68 +106,32 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Sessions API</h1>
+      <h1>Records API</h1>
 
       <div class="article">
-        <h2>用户登录</h2>
-        <h3>POST /sessions</h3>
+        <h2>删除账目记录</h2>
+        <h3>DELETE /records/:id</h3>
 
-          <h3>Parameters</h3>
-          <table class="parameters table table-striped table-bordered table-condensed">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="required">
-                    <span class="name">email</span>
-                </td>
-                <td>
-                  <span class="description">登录邮箱</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="required">
-                    <span class="name">password</span>
-                </td>
-                <td>
-                  <span class="description">登录密码</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
 
 
           <h3>Request</h3>
 
             <h4>Headers</h4>
             <pre class="request headers">Content-Type: application/json
-Cookie: </pre>
+Cookie: _morney_session_id=ZJGNR4X9OSmNgRoUPypRWM0tCd%2FutmopFhKF7wqMPUxh%2FIZgkZrxbuYBDLPWKZmYjFEBjgjIZVNe%2BxP2KA9mqEKyPfa%2BxHElI51wcs5CyDhHWpNxRbptAFyKCRdgz9i4hxidQJfoCzlSZrJ0bWyeHypwsKnk7ySoMLIDFuEnE5F9t9qNESKovN6IpLhw9S7lOXjF0us4Dl3OLi2InPByQAI5a1TJ6NMfM2RAKuPUVUdcTbggRoEG241W--iLfwrXLWWm8jZc8j--jWFJgyJOUA52rbeI1p9%2Bbw%3D%3D</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">POST /sessions</pre>
+          <pre class="request route highlight">DELETE /records/146</pre>
 
 
-            <h4>Body</h4>
-            <pre class="request body">{"email":"123@qq.com","password":"123456"}</pre>
 
 
             <h3>Response</h3>
               <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json; charset=utf-8
-Set-Cookie: _morney_session_id=wkT4u9%2F5hnCYBIhvDjaSRyylyiCayzymHxEq2Gm2UM%2FUUjc4G6PEygYP6l9mxqFrzwkNzUwimegZyAjWeFEyt8wpGVVI60toGlXjOmKc43UyxlJu1aM1bZEqVcVvN25tBodyPhHd443blK3t%2FN5jdiOl3WXPBkSebXp6EJgx38nRYdhFb8SBKJXsjmplYq75VIkcevXu%2BnDVHlCnjFthyJyw6pbs0ohqQyUYYZM0kq8Y%2FcpcR8dixsaf--QIgUDRWSn%2Bspf1nc--4tAI%2BuDV0Uemk7kMThmG5g%3D%3D; path=/; HttpOnly</pre>
+              <pre class="response headers">Content-Type: application/json
+Set-Cookie: _morney_session_id=znkTmUF9S5o1%2BuMcin%2FUhIeoDeyC7hVpxHKezjQ%2BMzOyjTmR0Oy3Z92aGLT7O03RmcANcxlDgMnBFPEMcw1FqLpMn5BxAwfItQnQ8h%2BIOwHwEuXKiOQCl7k7s4b3fk3IZaildWzR%2FC8wk7P6B9pQH%2BLWsJ1RvxRsWeVTLW%2FtyrVngB%2FXSTQx02EcQZnu5X1M04QmgpjD%2FAlaBGc%2BPfTrCJ26JK3qYuH6Qx%2B1epOv37OpaL4ywoYRUxvA--ZIhxM%2BbL3WVF5RSY--%2B4K%2FLmlabfZcem%2FNzXgKvg%3D%3D; path=/; HttpOnly</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
-              <h4>Body</h4>
-              <pre class="response body">{
-  &quot;msg&quot;: &quot;success&quot;,
-  &quot;resource&quot;: {
-    &quot;email&quot;: &quot;123@qq.com&quot;
-  }
-}</pre>
       </div>
     </div>
   </body>

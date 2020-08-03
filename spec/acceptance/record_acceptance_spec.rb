@@ -13,4 +13,15 @@ resource "Records" do
       expect(status).to eq 200
     end
   end
+
+  delete "/records/:id" do
+    let(:record) { Record.create! amount: 100, category: 'outgoings' }
+    let(:id) { record.id }
+    example "删除账目记录" do
+      sign_in
+      do_request
+
+      expect(status).to eq 200
+    end
+  end
 end
