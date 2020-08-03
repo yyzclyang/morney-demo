@@ -31,4 +31,20 @@ RSpec.describe "Records", type: :request do
       expect(response_body["errors"]["category"].length).to be >= 1
     end
   end
+
+  context 'destroy' do
+    it '未登录前不能删除' do
+      record = Record.create! amount: 1000, category: 'outgoings'
+      delete "/records/#{record.id}"
+
+      expect(response.status).to eq 401
+    end
+    it '未登录前不能删除' do
+      sign_in
+      record = Record.create! amount: 1000, category: 'outgoings'
+      delete "/records/#{record.id}"
+
+      expect(response.status).to eq 200
+    end
+  end
 end
