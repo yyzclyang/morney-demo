@@ -33,7 +33,7 @@ RSpec.describe "Records", type: :request do
   end
 
   context 'destroy' do
-    it '未登录前不能删除' do
+    it '未登录前不能删除 record' do
       record = Record.create! amount: 1000, category: 'outgoings'
       delete "/records/#{record.id}"
 
@@ -45,6 +45,53 @@ RSpec.describe "Records", type: :request do
       delete "/records/#{record.id}"
 
       expect(response.status).to eq 200
+    end
+  end
+
+  context 'index' do
+    it '未登录前不能获取 records' do
+      get "/records"
+
+      expect(response.status).to eq 401
+    end
+    it '正常获取 records' do
+      sign_in
+      get "/records"
+
+      expect(response.status).to eq 200
+    end
+    it '正常获取 records 会分页，一页最多 10 个' do
+      sign_in
+      (1..11).each do
+        Record.create! amount: 1000, category: 'outgoings'
+      end
+      get "/records"
+
+      response_body = JSON.parse response.body
+      expect(response.status).to eq 200
+      expect(response_body["resources"].length).to eq 10
+    end
+  end
+
+  context 'show' do
+    it '未登录前不能获取 record' do
+      record = Record.create! amount: 1000, category: 'outgoings'
+      get "/records/#{record.id}"
+
+      expect(response.status).to eq 401
+    end
+    it '能获取 record' do
+      sign_in
+      record = Record.create! amount: 1000, category: 'outgoings'
+      get "/records/#{record.id}"
+
+      expect(response.status).to eq 200
+    end
+    it '不能获取不存在的 record' do
+      sign_in
+      get "/records/9999"
+
+      expect(response.status).to eq 404
     end
   end
 end
