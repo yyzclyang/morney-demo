@@ -94,4 +94,22 @@ RSpec.describe "Records", type: :request do
       expect(response.status).to eq 404
     end
   end
+
+  context 'update' do
+    it '未登录前不能更新 record' do
+      record = Record.create! amount: 1000, category: 'outgoings'
+      patch "/records/#{record.id}", params: {amount: 99}
+
+      expect(response.status).to eq 401
+    end
+    it '能更新 record' do
+      sign_in
+      record = Record.create! amount: 1000, category: 'outgoings'
+      patch "/records/#{record.id}", params: {amount: 99}
+
+      response_body = JSON.parse response.body
+      expect(response.status).to eq 200
+      expect(response_body["resource"]["amount"]).to eq 99
+    end
+  end
 end
