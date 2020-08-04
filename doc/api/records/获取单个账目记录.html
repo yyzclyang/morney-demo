@@ -109,29 +109,60 @@ table th, table td {
       <h1>Records API</h1>
 
       <div class="article">
-        <h2>删除账目记录</h2>
-        <h3>DELETE /records/:id</h3>
+        <h2>获取单个账目记录</h2>
+        <h3>GET /records/:id</h3>
 
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">id</span>
+                </td>
+                <td>
+                  <span class="description">账目记录 id</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
 
           <h3>Request</h3>
 
             <h4>Headers</h4>
             <pre class="request headers">Content-Type: application/json
-Cookie: _morney_session_id=jommBEgeIUnZgDQDO1UOY1CfJAsCpmPxgL3r6zU%2BrvwzoNlZYE6udhfilANKAQanffrqmuZuEhHWTWGzIq3MIPr00CffIZr4jYFQWDg1qCDHLY34Zkf2GbUszETUt40PscLxQ5f2IF%2B%2FxffMB2O3Ixctmke%2BmscHqqyhbPlenTY%2BxgNFSuZn1VpntIMWADz9lV%2FippY6WEyikR0qcYy5c53i13YIAxjoqzOZdAwM3WU711O6K96m7RD%2B--XYeTQBQApJcnrRn9--OfMDE0gxETjgbFNb5hqG%2Fg%3D%3D</pre>
+Cookie: _morney_session_id=vXRt9s6uPwlN90J2zfcz6pN5zk9v6D6tOHjWaFNftVVDNkJGM38t%2BwaGyM2S4MzCxrAI%2B5n49czRdJ%2FPa2VcrHPLGpGQitL2ySLLVFLszVImn%2Fwk6roFlMonVDlsdoQCpvcIPoyCkkZ%2F07YrwgzAAPfm3eYSFVTOOsc8gXvbbrSQuoaqHSanCQDbsgnkPmtdGwT8pS1TUEuBqLgDTY93Vtk3vkzpuXlxqGda%2FgbiZF0ysdYksEJVjAGU--eyQZXHKcjKcKhVOt--b%2FyMeW1JPycQ1Bdg3pXNww%3D%3D</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">DELETE /records/244</pre>
+          <pre class="request route highlight">GET /records/245</pre>
 
 
 
 
             <h3>Response</h3>
               <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json
-Set-Cookie: _morney_session_id=iqvt8d%2BOQJIGCeBKig0RZvD3tCfcJZ8kJahDRtWU6hK5TxL%2BVeWkf0R4LVYp1LAZBBdQNL4D72ev8Fh%2BOli2r6xHfEWuojqgtnXCAQypvBF%2F0uvO85ga8ByOgESbedc1%2FPmrHRICbPxV6L21vVclhGR2Gjk4%2Fgs6X%2FteHl1QSidTMqwmo5oZXgH1kynqQpT05VTaVSwBZghbpPlAaZLOBwVYq6udUUWO8%2BK2FF2ntW2HsurIauIo6a%2BQ--LMoyUIyafNs0tc8f--YFc2q4dzwhkkSDLkfY8ScQ%3D%3D; path=/; HttpOnly</pre>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+Set-Cookie: _morney_session_id=fCkttQVkFqnLAsORt%2BlBRxrcwz92t8awDcuazS4Y9vYxjGJQqu9q9npdPUXHVgSBvdZsvkx3BmopyPKUzlCWzQajdnZmLDM9KXiAkV6yt41OPDtfhP%2FwjpZTxN9Xopa2WcAMHdTYMN4eYAWF3AlCyFO%2BC2w3TfIrEldWFvEO%2B0y3zh0adnE49QJQebQ0xjFoEtl4mb2qGx%2Bp%2BB%2FPMtc%2Bejdg82frKuHbtWhv5%2Buu2LWlAcDsizDqJZmS--TDPWzPCGEN4H9Joy--6vscHhc1HjyOd60TSsdljQ%3D%3D; path=/; HttpOnly</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;msg&quot;: &quot;success&quot;,
+  &quot;resource&quot;: {
+    &quot;id&quot;: 245,
+    &quot;amount&quot;: 100,
+    &quot;category&quot;: &quot;outgoings&quot;,
+    &quot;notes&quot;: null,
+    &quot;created_at&quot;: &quot;2020-08-04T14:28:14.629Z&quot;,
+    &quot;updated_at&quot;: &quot;2020-08-04T14:28:14.629Z&quot;
+  }
+}</pre>
       </div>
     </div>
   </body>
