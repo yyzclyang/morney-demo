@@ -109,39 +109,76 @@ table th, table td {
       <h1>Records API</h1>
 
       <div class="article">
-        <h2>获取单个账目记录</h2>
-        <h3>GET /records/:id</h3>
+        <h2>更新单个账目记录</h2>
+        <h3>PATCH /records/:id</h3>
 
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">amount</span>
+                </td>
+                <td>
+                  <span class="description">金额</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">category</span>
+                </td>
+                <td>
+                  <span class="description">类型: outgoings | income</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">notes</span>
+                </td>
+                <td>
+                  <span class="description">备注</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
 
           <h3>Request</h3>
 
             <h4>Headers</h4>
             <pre class="request headers">Content-Type: application/json
-Cookie: _morney_session_id=aUDfkaPQRHnJ8z6nnTmHhmx79KdI8fQBwEnukCBgmGoouZtF1pGohIn0YXYgBVtwxMGItP%2BK5sARtBDjrVCMCbg39vQkoNX7SOlf247i7BdSEqnZFbR6c%2FgzlG5mzdkmdKUDmsr8nqNKuM7IsyzYl2IkmW0mkllzBjuaa%2FvCZI%2BlpAbj1jBXzGEXprXxRCfZD1uBIHyl7hMYhbpg8laitDyDugPy2KjOJlMLiIpZ2kDrCVQFpM9I%2FzFN--K7HSwYS%2FWkBOUKHR--N%2BTbK3FSHd7WhzBQt9oUYQ%3D%3D</pre>
+Cookie: _morney_session_id=RziBCrT5DriztJyESRCQfq0rDhFKtAIV8gvVfgG1PMuO723mMnQ1WDxqdEJHznPpOaAH8LuiUZh9k5qhkVYaSl1JRFeK0uzi8OM4SS0nCx%2FwH2RHAjYpdj5rcS9gYNqeu6dY39q0wPP75LekT%2B7LHFWjKco7yFIhzkDkz0P1AHjo%2Btu14MOT1YAcbGzIdLQRQAyKTjsRJdqOaRk%2F3pWQR%2BoSVhhU8MDMvTrDm6c7nfsaX9PqCJVHm1Ah--3R1AYvFoQLns6vUj--Qu5s2f7W3sBKjqLNm0RJQA%3D%3D</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET /records/328</pre>
+          <pre class="request route highlight">PATCH /records/329</pre>
 
 
+            <h4>Body</h4>
+            <pre class="request body">{"amount":9,"category":"income","notes":"吃饭"}</pre>
 
 
             <h3>Response</h3>
               <h4>Headers</h4>
               <pre class="response headers">Content-Type: application/json; charset=utf-8
-Set-Cookie: _morney_session_id=RVGq46tO3F4dSCgBjvVmsL9od%2FHR7NuFkbb%2F38JyV3qQ7edDXXGCN03yiFhfU569psi82Q2fmWORNOGOqHtq0AFuRFD6AA5cawYBQU0e3QsmCTcrq62N%2BzbciGcm2ykaWseSAzMKLLEwHCpUSvf5xCK7UclJP5t4D5%2FEgLJ6kk1SfqOyDJ6gAz2qRsoguFbKsGQC1ec9UfvuXXW%2BwwqqSi%2FRIj1yL7oR9hsn6jsQ2WCLQASaOL6bookq--8jElyXG2Narghz3f--ylRE4SzMtnPwD7OYxqWUrg%3D%3D; path=/; HttpOnly</pre>
+Set-Cookie: _morney_session_id=xtObCVneYcoZ98N9YHMYTi14ImZPKrNtXQawa%2F3oiNke6TaOA0eqMU8vv8FsAj89%2Br1WqRjC%2BvP2ZrsyrpM3sX5aAxd4Rl9W%2FJU0fcQ1BUMzVtcBFsu0QnZ5Bbx%2FY0x%2F%2BhdegsA93xRWAxVrmfd%2F9lMaqH4fCQLUvdIBH6OgTaquX1G7kEKiuBpoVOU5vkQH7G0PgHHJx7PZPC29iYfUpUQcCbYjrd9d6pJFH1dRWWctqy1RRICtodk1--tm2Mj8ku1y5elJZP--E6Wov%2Ff4M%2BIAUZQ%2FKulKLQ%3D%3D; path=/; HttpOnly</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
               <pre class="response body">{
   &quot;msg&quot;: &quot;success&quot;,
   &quot;resource&quot;: {
-    &quot;id&quot;: 328,
-    &quot;amount&quot;: 100,
-    &quot;category&quot;: &quot;outgoings&quot;,
-    &quot;notes&quot;: null,
-    &quot;created_at&quot;: &quot;2020-08-04T14:50:55.679Z&quot;,
-    &quot;updated_at&quot;: &quot;2020-08-04T14:50:55.679Z&quot;
+    &quot;id&quot;: 329,
+    &quot;amount&quot;: 9,
+    &quot;category&quot;: &quot;income&quot;,
+    &quot;notes&quot;: &quot;吃饭&quot;,
+    &quot;created_at&quot;: &quot;2020-08-04T14:50:55.721Z&quot;,
+    &quot;updated_at&quot;: &quot;2020-08-04T14:50:55.734Z&quot;
   }
 }</pre>
       </div>

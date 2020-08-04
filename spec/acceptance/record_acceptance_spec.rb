@@ -40,12 +40,25 @@ resource "Records" do
   end
 
   get "/records/:id" do
-    parameter :id, '账目记录 id', type: :integer, require: true
     let(:record) { Record.create! amount: 100, category: 'outgoings' }
     let(:id) { record.id }
     example "获取单个账目记录" do
       sign_in
       do_request
+
+      expect(status).to eq 200
+    end
+  end
+
+  patch "/records/:id" do
+    parameter :amount, '金额', type: :integer
+    parameter :category, '类型: outgoings | income', type: :string
+    parameter :notes, '备注', type: :string
+    let(:record) { Record.create! amount: 100, category: 'outgoings' }
+    let(:id) { record.id }
+    example "更新单个账目记录" do
+      sign_in
+      do_request(amount: 9, category: "income", notes: "吃饭")
 
       expect(status).to eq 200
     end
