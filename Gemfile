@@ -17,6 +17,7 @@ gem 'puma', '~> 4.1'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails'
+gem 'kaminari'
 
 gem 'rspec_api_documentation', '6.1.0', git: 'git@github.com:yyzclyang/rspec_api_documentation.git'
 
