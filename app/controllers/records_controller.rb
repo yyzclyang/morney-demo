@@ -7,8 +7,8 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    record = Record.find params[:id]
-    head record.destroy ? 200 : 400
+    record = Record.find_by_id params[:id]
+    head record.present? && record.destroy ? 200 : 400
   end
 
   def index
