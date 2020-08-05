@@ -34,3 +34,8 @@ zh-CN:
               not_an_integer: 金额类型错误
             category:
               blank: 类型不能为空
+        tag:
+          attributes:
+            name:
+              blank: 标签名不能为空
+              to_long: 标签名不能超过 30 个字符
