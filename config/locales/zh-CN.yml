@@ -38,4 +38,4 @@ zh-CN:
           attributes:
             name:
               blank: 标签名不能为空
-              to_long: 标签名不能超过 30 个字符
+              to_long: 标签名不能超过 20 个字符

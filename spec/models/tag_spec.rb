@@ -11,8 +11,8 @@ RSpec.describe Tag, type: :model do
     tag = Tag.create
     expect(tag.errors.details[:name]).to include({:error => :blank})
   end
-  it '创建 tag 的 name 最大长度为 30' do
-    tag = Tag.create name: '123456789012345678901234567890123'
-    expect(tag.errors.details[:name]).to include({:count => 30, :error => :too_long})
+  it '创建 tag 的 name 最大长度为 20' do
+    tag = Tag.create name: '12345678901234567890123'
+    expect(tag.errors.details[:name]).to include({:count => 20, :error => :too_long})
   end
 end
