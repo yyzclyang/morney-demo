@@ -39,7 +39,7 @@ RSpec.describe "Records", type: :request do
 
       expect(response.status).to eq 401
     end
-    it '未登录前不能删除' do
+    it ' 正常删除 record' do
       sign_in
       record = Record.create! amount: 1000, category: 'outgoings'
       delete "/records/#{record.id}"
