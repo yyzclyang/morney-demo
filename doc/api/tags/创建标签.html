@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Records API</title>
+    <title>Tags API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,32 +106,63 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Records API</h1>
+      <h1>Tags API</h1>
 
       <div class="article">
-        <h2>删除账目记录</h2>
-        <h3>DELETE /records/:id</h3>
+        <h2>创建标签</h2>
+        <h3>POST /tags</h3>
 
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="required">
+                    <span class="name">name</span>
+                </td>
+                <td>
+                  <span class="description">标签名</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
 
           <h3>Request</h3>
 
             <h4>Headers</h4>
             <pre class="request headers">Content-Type: application/json
-Cookie: _morney_session_id=qvMZ2SmBbB7j0myFZWLa4DNkSfWj4p6PwDEbtRNgsx51D2KWeH4zW9MUdxHcFMYfnmXUsTBM0d%2F824vp9DCWvuLzbQrzvCpN17I9IRohCNPeNjGqRX7gX6C6jATrLak8%2FuLGkt03ut47T4yHmTjCYVIgzLmmZF1d4nFCOSf%2BVKY6Uzj3mCNrKShYiczqrszqcbtRJNSzVbicU0Y%2BAMeM8WuABSwcuF0LP%2BXoidXt53Ht8CnXuYpe4bGc--BTXO5T9THat7xntb--L5tFiY7ERKkb2ICqyX45LQ%3D%3D</pre>
+Cookie: _morney_session_id=MjMabMDTGBky7pVN2JobRpp%2FNR7gsHKIlYo4aweCXn2Ydw%2FzM0FbMmpZWpMD3Xh6QS9tYjLxX06OnaOuo4fDie7MPi0gunD6qAcP57BcupM%2BxXqnXOZpyXgV7CNbFGKh1EXqPt3G3UzjelKExjr9ww0dbW0R5aVFCQg19Km6Ypt3ufQ6OxaI9JOqgfmz0FvBAYuO4inmvpa1ruVLLBar8yQ4qPUobIQ6A%2FlmQG6NKqDcA0Prwv36OuAz--ir3JQleuMSA9gNcU--WfQqrMS%2Bx7hoF4IzBDZQBA%3D%3D</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">DELETE /records/353</pre>
+          <pre class="request route highlight">POST /tags</pre>
 
 
+            <h4>Body</h4>
+            <pre class="request body">{"name":"吃饭"}</pre>
 
 
             <h3>Response</h3>
               <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json
-Set-Cookie: _morney_session_id=UWfT1Am3GtF4AesauzSgGm%2F3rHTNyxBb2Se6DcqM7hBp4XaGRxEcJTa%2FtAMNLYO2q5UszopCGroTv0Dr1A2mV%2F2u3SQhfgvvz5yqj2LTPQJcuND3Lj0N8KS15kUFAAXK%2Fs%2BdMa0EOMxd7G2J3kbL2kyHihjAeZhycD5sttfjym1Wab6KNBFq7kIUA88HnGU%2FrGnBKLH2fG8z9BEDzwFGYTNhLAm1cgpgSQtQzZA8GTVm%2Bp424uxi5adT--1v9OQ2NvwowqyX58--K%2BF2BpFlfEYrb3TTl%2FK7Pg%3D%3D; path=/; HttpOnly</pre>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+Set-Cookie: _morney_session_id=NVSmuIHeI5unTKaosWUIYvNfoPl2v85872wwdgR2mF3TlWgycZGNXI%2FYYH%2FWSYtt5VlonnUaMKsvsHLP%2Fvu6Jd1gK1T8SkaK3eMPywek6HvjjQkFmNb6zZDRhsh7GOhJa5REuVGZ6O%2FN%2FcvPrvY3pCg5iqpu1NCcdkm0e8aupwLAaHWqnnLgvz35Q7i3P%2BIR0hduYxJoZmbroskAt3%2BSZ7TlV3QRR9rajF8%2FhoGvjDQTJh0rv4IXQF4m--z%2Fro7z%2BklMIc95uQ--n%2Fl3QbXqbIvNTHy1YjjrtQ%3D%3D; path=/; HttpOnly</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;msg&quot;: &quot;success&quot;,
+  &quot;resource&quot;: {
+    &quot;id&quot;: 86,
+    &quot;name&quot;: &quot;吃饭&quot;,
+    &quot;created_at&quot;: &quot;2020-08-06T13:33:24.916Z&quot;,
+    &quot;updated_at&quot;: &quot;2020-08-06T13:33:24.916Z&quot;
+  }
+}</pre>
       </div>
     </div>
   </body>

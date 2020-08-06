@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tags API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tags API</h1>
+
+      <div class="article">
+        <h2>获取所有标签</h2>
+        <h3>GET /tags</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">page</span>
+                </td>
+                <td>
+                  <span class="description">页码</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Content-Type: application/json
+Cookie: _morney_session_id=L4P%2FwzEMgTfaUfd294cz8mQVXaiDvhCuk4v3eWsdsFX8hnh65hMcRdQE9Pfvk9QzPkU6S2rhRcT%2B0Hl6nkp3Lk8IK1gUaE3au8bk6%2Fc71dNeqtv1ijN5hngHZb%2Fex6FGIDGYMy5Z%2BmI7Q9qHoar7tcQGc0c2RW37%2B27ne8IE%2Fdi8CPzH0dYj6BgU1IqPK8%2BlO38AoIMLHfqAqPj52wfj5q1O1U1dNHGN2Xs4%2FhiZb%2BQDpqNWBtwvPau6--sFtzJ6Q7%2B74AbdR6--cnpsJr14b2hBDQXP0I0YiA%3D%3D</pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET /tags?page=1</pre>
+
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">page: 1</pre>
+
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+Set-Cookie: _morney_session_id=TNdJXoEGAvS%2BjK9pIESixMAVsWSL%2BKJJ9jBzW0G05XH5r3tunc0927njYFdqx9FcRqbDdPCS5ksjuy7A4tuF3Q6WLgrPJaJGSTV63KjJ45%2BWpdAX2O9b8wvtJhQ0xWB2XiDgbvgkkZK4OS%2Bzjrk2S5USR3D9DRH%2FFMmdJwLJED32EonsbPdXB9OVXle5KqBedPeLxs481WcHW4Xfvm7Mwaq3HRTjL6oX7A3RMjQhzIVf62ftx2VWW%2FcJ--a%2F8mD0vNd0v8yyuB--RKrh3aTsHsR3I3GJ4FBuPg%3D%3D; path=/; HttpOnly</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;msg&quot;: &quot;success&quot;,
+  &quot;resources&quot;: [
+    {
+      &quot;id&quot;: 60,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.496Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.496Z&quot;
+    },
+    {
+      &quot;id&quot;: 61,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.506Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.506Z&quot;
+    },
+    {
+      &quot;id&quot;: 62,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.512Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.512Z&quot;
+    },
+    {
+      &quot;id&quot;: 63,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.520Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.520Z&quot;
+    },
+    {
+      &quot;id&quot;: 64,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.525Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.525Z&quot;
+    },
+    {
+      &quot;id&quot;: 65,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.531Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.531Z&quot;
+    },
+    {
+      &quot;id&quot;: 66,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.538Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.538Z&quot;
+    },
+    {
+      &quot;id&quot;: 67,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.544Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.544Z&quot;
+    },
+    {
+      &quot;id&quot;: 68,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.550Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.550Z&quot;
+    },
+    {
+      &quot;id&quot;: 69,
+      &quot;name&quot;: &quot;吃饭&quot;,
+      &quot;created_at&quot;: &quot;2020-08-06T13:32:36.556Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-06T13:32:36.556Z&quot;
+    }
+  ]
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>
