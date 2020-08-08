@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :records
 
   resources :tags
+
+  resources :taggings, except: [:update]
 end
