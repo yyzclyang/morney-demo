@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Taggings API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Taggings API</h1>
+
+      <div class="article">
+        <h2>获取所有标记</h2>
+        <h3>GET /taggings</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">page</span>
+                </td>
+                <td>
+                  <span class="description">页码</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Content-Type: application/json
+Cookie: _morney_session_id=CGwMhXfUjymhY5c%2B1rsSLCcOt06ekaSoUCj0voeNRg4B8svO7KcVmDx61r1mMuyl%2BEJZK836gsK4oz0h%2FSIIQt1N0nVcuJ6X%2FsYWCNnOrjxF0QSnOfxkeSO%2BIjOzgOWc%2BRC6TZZBiPoE4PE6kMauFzGAYjE6OdQgLMYocbbtivLV5voRzbj0keHT0wdnE%2Fd430z2GnPjZCux59QJ0x%2B6wvxNpp0pcOHuDjmS%2BwYLbEvnmvWouE7q8%2BR%2F--CrxSucMLA2HOxAjy--UVfrb6LTCzF0%2BpgHlMCJ5Q%3D%3D</pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET /taggings?page=1</pre>
+
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">page: 1</pre>
+
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+Set-Cookie: _morney_session_id=HGUGzdUCU%2FMWonCLaOvQZsNtiNuu5zkZsyq3H0yZ06ZZ%2B0qzatr6TXA9P9QadJxwejPEkf2q0YPQ%2BGKpTTcLF4q9aBHRrE9RxE5jINZ8k%2F5ICZ5mu8uhKhbIsCSrofVziyczu5XxqE36HIWccE%2BFn%2FLgcr2zmEN0A3phgxIRsCh3mjLaFHXTD51x9dAwWZpyqZvjDK2jVYnGy1pwWayqCkQaPQjFnx6%2F2AkVRBH72Vj6YziPrxBxuWWQ--EJzmj7sT6BOzOG0i--55knq0csIcY22uPVWXQolQ%3D%3D; path=/; HttpOnly</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;msg&quot;: &quot;success&quot;,
+  &quot;resources&quot;: [
+    {
+      &quot;id&quot;: 129,
+      &quot;tag_id&quot;: 488,
+      &quot;record_id&quot;: 483,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.549Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.549Z&quot;
+    },
+    {
+      &quot;id&quot;: 130,
+      &quot;tag_id&quot;: 489,
+      &quot;record_id&quot;: 484,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.569Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.569Z&quot;
+    },
+    {
+      &quot;id&quot;: 131,
+      &quot;tag_id&quot;: 490,
+      &quot;record_id&quot;: 485,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.587Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.587Z&quot;
+    },
+    {
+      &quot;id&quot;: 132,
+      &quot;tag_id&quot;: 491,
+      &quot;record_id&quot;: 486,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.607Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.607Z&quot;
+    },
+    {
+      &quot;id&quot;: 133,
+      &quot;tag_id&quot;: 492,
+      &quot;record_id&quot;: 487,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.623Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.623Z&quot;
+    },
+    {
+      &quot;id&quot;: 134,
+      &quot;tag_id&quot;: 493,
+      &quot;record_id&quot;: 488,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.638Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.638Z&quot;
+    },
+    {
+      &quot;id&quot;: 135,
+      &quot;tag_id&quot;: 494,
+      &quot;record_id&quot;: 489,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.654Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.654Z&quot;
+    },
+    {
+      &quot;id&quot;: 136,
+      &quot;tag_id&quot;: 495,
+      &quot;record_id&quot;: 490,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.670Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.670Z&quot;
+    },
+    {
+      &quot;id&quot;: 137,
+      &quot;tag_id&quot;: 496,
+      &quot;record_id&quot;: 491,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.686Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.686Z&quot;
+    },
+    {
+      &quot;id&quot;: 138,
+      &quot;tag_id&quot;: 497,
+      &quot;record_id&quot;: 492,
+      &quot;created_at&quot;: &quot;2020-08-08T06:45:21.701Z&quot;,
+      &quot;updated_at&quot;: &quot;2020-08-08T06:45:21.701Z&quot;
+    }
+  ]
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>
