@@ -1,15 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe "Records", type: :request do
+  before :each do
+    @user = User.create!(email: '1234@qq.com', password: '123456', password_confirmation: '123456')
+  end
   context 'create' do
     it '未登录前不可以创建 record' do
-      post '/records', params: {amount: 10000, category: 'outgoings', notes: '吃饭'}
+      post '/records', params: {amount: 10000, category: 'outgoings', notes: '吃饭', user: @user}
       expect(response.status).to eq 401
     end
     it '可以创建 record' do
       sign_in
 
-      post '/records', params: {amount: 10000, category: 'outgoings', notes: '吃饭'}
+      post '/records', params: {amount: 10000, category: 'outgoings', notes: '吃饭', user: @user}
       expect(response.status).to eq 200
       response_body = JSON.parse(response.body)
       expect(response_body["msg"]).to eq "success"
@@ -17,7 +20,7 @@ RSpec.describe "Records", type: :request do
     it '创建 record 时 amount 参数发生错误' do
       sign_in
 
-      post '/records', params: {category: 'outgoings', notes: '吃饭'}
+      post '/records', params: {category: 'outgoings', notes: '吃饭', user: @user}
       expect(response.status).to eq 422
       response_body = JSON.parse(response.body)
       expect(response_body["errors"]["amount"].length).to be >= 1
@@ -25,7 +28,7 @@ RSpec.describe "Records", type: :request do
     it '创建 record 时 category 参数发生错误' do
       sign_in
 
-      post '/records', params: {amount: 100, notes: '吃饭'}
+      post '/records', params: {amount: 100, notes: '吃饭', user: @user}
       expect(response.status).to eq 422
       response_body = JSON.parse(response.body)
       expect(response_body["errors"]["category"].length).to be >= 1
@@ -33,16 +36,17 @@ RSpec.describe "Records", type: :request do
   end
 
   context 'destroy' do
+    before :each do
+      @record = Record.create! amount: 1000, category: 'outgoings', user: @user
+    end
     it '未登录前不能删除 record' do
-      record = Record.create! amount: 1000, category: 'outgoings'
-      delete "/records/#{record.id}"
+      delete "/records/#{@record.id}"
 
       expect(response.status).to eq 401
     end
     it ' 正常删除 record' do
       sign_in
-      record = Record.create! amount: 1000, category: 'outgoings'
-      delete "/records/#{record.id}"
+      delete "/records/#{@record.id}"
 
       expect(response.status).to eq 200
     end
@@ -63,7 +67,7 @@ RSpec.describe "Records", type: :request do
     it '正常获取 records 会分页，一页最多 10 个' do
       sign_in
       (1..11).each do
-        Record.create! amount: 1000, category: 'outgoings'
+        Record.create! amount: 1000, category: 'outgoings', user: @user
       end
       get "/records"
 
@@ -74,16 +78,17 @@ RSpec.describe "Records", type: :request do
   end
 
   context 'show' do
+    before :each do
+      @record = Record.create! amount: 1000, category: 'outgoings', user: @user
+    end
     it '未登录前不能获取 record' do
-      record = Record.create! amount: 1000, category: 'outgoings'
-      get "/records/#{record.id}"
+      get "/records/#{@record.id}"
 
       expect(response.status).to eq 401
     end
     it '能获取 record' do
       sign_in
-      record = Record.create! amount: 1000, category: 'outgoings'
-      get "/records/#{record.id}"
+      get "/records/#{@record.id}"
 
       expect(response.status).to eq 200
     end
@@ -96,16 +101,17 @@ RSpec.describe "Records", type: :request do
   end
 
   context 'update' do
+    before :each do
+      @record = Record.create! amount: 1000, category: 'outgoings', user: @user
+    end
     it '未登录前不能更新 record' do
-      record = Record.create! amount: 1000, category: 'outgoings'
-      patch "/records/#{record.id}", params: {amount: 99}
+      patch "/records/#{@record.id}", params: {amount: 99}
 
       expect(response.status).to eq 401
     end
     it '能更新 record' do
       sign_in
-      record = Record.create! amount: 1000, category: 'outgoings'
-      patch "/records/#{record.id}", params: {amount: 99}
+      patch "/records/#{@record.id}", params: {amount: 99}
 
       response_body = JSON.parse response.body
       expect(response.status).to eq 200

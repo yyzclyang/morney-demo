@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Session, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
+  before :each do
+    User.create! email: '1234@qq.com', password: '123456', password_confirmation: '123456'
+  end
   it '可以创建 session' do
-    User.create! email: '123@qq.com', password: '123456', password_confirmation: '123456'
-    session = Session.new email: '123@qq.com', password: '123456'
+    session = Session.new email: '1234@qq.com', password: '123456'
     session.validate
     expect(session.errors.empty?).to be true
   end
@@ -16,36 +18,31 @@ RSpec.describe Session, type: :model do
   end
 
   it '创建 session 时 email 格式必须对' do
-    User.create! email: '123@qq.com', password: '123456', password_confirmation: '123456'
     session = Session.new email: '123qq.com', password: '123456'
     session.validate
     expect(session.errors.details[:email]).to include({:error => :invalid, :value => "123qq.com"})
   end
 
   it '创建 session 时 email 必须已注册' do
-    User.create! email: '123@qq.com', password: '123456', password_confirmation: '123456'
-    session = Session.new email: '1234@qq.com', password: '123456'
+    session = Session.new email: '12345@qq.com', password: '123456'
     session.validate
     expect(session.errors.details[:email]).to include({:error => :not_found})
   end
 
   it '创建 session 时 password 必须存在' do
-    User.create! email: '123@qq.com', password: '123456', password_confirmation: '123456'
-    session = Session.new email: '123@qq.com'
+    session = Session.new email: '1234@qq.com'
     session.validate
     expect(session.errors.details[:password]).to include({:error => :blank})
   end
 
   it '创建 session 时 password 必须大于 6 位' do
-    User.create! email: '123@qq.com', password: '123456', password_confirmation: '123456'
-    session = Session.new email: '123@qq.com', password: '123'
+    session = Session.new email: '1234@qq.com', password: '123'
     session.validate
     expect(session.errors.details[:password]).to include({:count => 6, :error => :too_short})
   end
 
   it '创建 session 时 email 和 password 必须匹配' do
-    User.create! email: '123@qq.com', password: '123456', password_confirmation: '123456'
-    session = Session.new email: '123@qq.com', password: '1234567'
+    session = Session.new email: '1234@qq.com', password: '1234567'
     session.validate
     expect(session.errors.details[:password]).to include({:error => :mismatch})
   end

@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Tagging, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
+  before :each do
+    @user = User.create email: '1234@qq.com', password: '123456', password_confirmation: '123456'
+  end
   it '创建 tagging 必须有 record 和 tag' do
     tagging = Tagging.create
 
@@ -10,7 +13,7 @@ RSpec.describe Tagging, type: :model do
   end
   it '可以创建 tagging' do
     tag = Tag.create name: '娱乐'
-    record = Record.create amount: 100, category: 'outgoings', notes: '吃饭'
+    record = Record.create amount: 100, category: 'outgoings', notes: '吃饭', user: @user
     tagging = Tagging.create tag: tag, record: record
 
     expect(tagging.errors.empty?).to be true
@@ -21,8 +24,8 @@ RSpec.describe Tagging, type: :model do
   it '可以使用 tags 和 records 创建 tagging' do
     tag1 = Tag.create name: '娱乐'
     tag2 = Tag.create name: '娱乐'
-    record1 = Record.create amount: 100, category: 'outgoings', notes: '吃饭'
-    record2 = Record.create amount: 100, category: 'outgoings', notes: '吃饭'
+    record1 = Record.create amount: 100, category: 'outgoings', notes: '吃饭', user: @user
+    record2 = Record.create amount: 100, category: 'outgoings', notes: '吃饭', user: @user
     Tagging.create tag: tag1, record: record1
     Tagging.create tag: tag1, record: record2
     Tagging.create tag: tag2, record: record1

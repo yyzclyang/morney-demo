@@ -2,7 +2,8 @@ require 'rails_helper'
 require 'rspec_api_documentation/dsl'
 
 resource "Taggings" do
-  let(:record) { Record.create! amount: 100, category: 'outgoings', notes: '吃饭' }
+  let(:user) { User.create! email: '1234@qq.com', password: '123456', password_confirmation: '123456' }
+  let(:record) { Record.create! amount: 100, category: 'outgoings', notes: '吃饭', user: user }
   let(:tag) { Tag.create! name: '吃饭' }
   let(:tagging) { Tagging.create! record: record, tag: tag }
   let(:id) { tagging.id }
@@ -30,12 +31,12 @@ resource "Taggings" do
   get "/taggings" do
     parameter :page, '页码', type: :integer
     let(:page) { 1 }
-    (1..11).each do
-      record = Record.create! amount: 100, category: 'outgoings', notes: '吃饭'
-      tag = Tag.create! name: '娱乐'
-      Tagging.create! record: record, tag: tag
-    end
     example "获取所有标记" do
+      (1..11).each do
+        record = Record.create! amount: 100, category: 'outgoings', notes: '吃饭', user: user
+        tag = Tag.create! name: '娱乐'
+        Tagging.create! record: record, tag: tag
+      end
       sign_in
       do_request
 
