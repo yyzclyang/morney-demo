@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   before_action :must_sign_in
 
   def create
-    record = Record.create(create_params)
+    record = Record.create(create_params.merge user: current_user)
     render_resource record
   end
 
