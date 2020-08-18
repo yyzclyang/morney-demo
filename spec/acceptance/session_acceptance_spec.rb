@@ -6,7 +6,7 @@ resource "Sessions" do
     parameter :email, '登录邮箱', type: :string, required: true
     parameter :password, '登录密码', type: :string, required: true
     example "用户登录" do
-      create(:user)
+      create(:user, email: '1234@qq.com')
       do_request(email: '1234@qq.com', password: '123456')
 
       expect(status).to eq 200
