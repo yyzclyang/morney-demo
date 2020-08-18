@@ -34,7 +34,7 @@ RSpec.describe "Tags", type: :request do
 
   context 'destroy' do
     it '未登录前不能删除 tag' do
-      tag = Tag.create! name: '娱乐'
+      tag = create(:tag)
       delete "/tags/#{tag.id}"
 
       expect(response.status).to eq 401
@@ -47,7 +47,7 @@ RSpec.describe "Tags", type: :request do
     end
     it '正常删除 tag' do
       sign_in
-      tag = Tag.create! name: '娱乐'
+      tag = create(:tag)
       delete "/tags/#{tag.id}"
 
       expect(response.status).to eq 200
@@ -69,7 +69,7 @@ RSpec.describe "Tags", type: :request do
     it '正常获取 tags 会分页，一页最多 10 个' do
       sign_in
       (1..11).each do
-        Tag.create! name: "吃饭"
+        create(:tag)
       end
       get "/tags"
 
@@ -81,14 +81,14 @@ RSpec.describe "Tags", type: :request do
 
   context 'show' do
     it '未登录前不能获取 tag' do
-      tag = Tag.create! name: '吃饭'
+      tag = create(:tag)
       get "/tags/#{tag.id}"
 
       expect(response.status).to eq 401
     end
     it '能获取 tag' do
       sign_in
-      tag = Tag.create! name: '吃饭'
+      tag = create(:tag)
       get "/tags/#{tag.id}"
 
       expect(response.status).to eq 200
@@ -103,14 +103,14 @@ RSpec.describe "Tags", type: :request do
 
   context 'update' do
     it '未登录前不能更新 tag' do
-      tag = Tag.create! name: '吃饭'
+      tag = create(:tag)
       patch "/tags/#{tag.id}", params: {name: '交通'}
 
       expect(response.status).to eq 401
     end
     it '能更新 tag' do
       sign_in
-      tag = Tag.create! name: '吃饭'
+      tag = create(:tag)
       patch "/tags/#{tag.id}", params: {name: '交通'}
 
       response_body = JSON.parse response.body

@@ -4,7 +4,7 @@ require 'rspec_api_documentation/dsl'
 resource "Taggings" do
   let(:user) { create(:user) }
   let(:record) { create(:record) }
-  let(:tag) { Tag.create! name: '吃饭' }
+  let(:tag) { create(:tag) }
   let(:tagging) { Tagging.create! record: record, tag: tag }
   let(:id) { tagging.id }
 
@@ -34,7 +34,7 @@ resource "Taggings" do
     example "获取所有标记" do
       (1..11).each do
         record = create(:record, user: user)
-        tag = Tag.create! name: '娱乐'
+        tag = create(:tag)
         Tagging.create! record: record, tag: tag
       end
       sign_in
