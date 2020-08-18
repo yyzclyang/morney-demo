@@ -5,7 +5,7 @@ RSpec.describe "Taggings", type: :request do
     @user = create(:user)
     @record = create(:record, user: @user)
     @tag = create(:tag)
-    @tagging = Tagging.create! record: @record, tag: @tag
+    @tagging = create(:tagging, tag: @tag, record: @record)
   end
 
   context 'create' do
@@ -70,7 +70,7 @@ RSpec.describe "Taggings", type: :request do
       (1..11).each do
         record = create(:record, user: @user)
         tag = create(:tag)
-        Tagging.create! record: record, tag: tag
+        create(:tagging, tag: tag, record: record)
       end
       get "/taggings"
 
