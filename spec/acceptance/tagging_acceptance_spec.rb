@@ -5,7 +5,7 @@ resource "Taggings" do
   let(:user) { create(:user) }
   let(:record) { create(:record, user: user) }
   let(:tag) { create(:tag, user: user) }
-  let(:tagging) { create(:tagging, tag: tag, record: record) }
+  let(:tagging) { create(:tagging, tag: tag, record: record, user: user) }
   let(:id) { tagging.id }
 
   post "/taggings" do
@@ -35,7 +35,7 @@ resource "Taggings" do
       (1..11).each do
         record = create(:record, user: user)
         tag = create(:tag, user: user)
-        create(:tagging, tag: tag, record: record)
+        create(:tagging, tag: tag, record: record, user: user)
       end
       sign_in
       do_request

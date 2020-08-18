@@ -5,7 +5,7 @@ RSpec.describe Tagging, type: :model do
     @user = create(:user)
   end
   it '创建 tagging 必须有 record 和 tag' do
-    tagging = Tagging.create
+    tagging = Tagging.create user: @user
 
     expect(tagging.errors.details[:record]).to include({:error => :blank})
     expect(tagging.errors.details[:tag]).to include({:error => :blank})
@@ -13,7 +13,7 @@ RSpec.describe Tagging, type: :model do
   it '可以创建 tagging' do
     tag = create(:tag, user: @user)
     record = create(:record, user: @user)
-    tagging = Tagging.create tag: tag, record: record
+    tagging = Tagging.create tag: tag, record: record, user: @user
 
     expect(tagging.errors.empty?).to be true
     expect(tagging.id).to be_a Numeric
@@ -25,10 +25,10 @@ RSpec.describe Tagging, type: :model do
     tag2 = create(:tag, user: @user)
     record1 = create(:record, user: @user)
     record2 = create(:record, user: @user)
-    Tagging.create tag: tag1, record: record1
-    Tagging.create tag: tag1, record: record2
-    Tagging.create tag: tag2, record: record1
-    Tagging.create tag: tag2, record: record2
+    Tagging.create tag: tag1, record: record1, user: @user
+    Tagging.create tag: tag1, record: record2, user: @user
+    Tagging.create tag: tag2, record: record1, user: @user
+    Tagging.create tag: tag2, record: record2, user: @user
 
     expect(tag1.records.count).to eq 2
     expect(tag2.records.count).to eq 2
