@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :records
   has_many :tags
+  has_many :taggings
 
   has_secure_password
 
