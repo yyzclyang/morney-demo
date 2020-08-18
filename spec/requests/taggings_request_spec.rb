@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Taggings", type: :request do
   before :each do
     @user = create(:user)
-    @record = Record.create! amount: 100, category: 'outgoings', notes: '吃饭', user: @user
+    @record = create(:record, user: @user)
     @tag = Tag.create! name: '娱乐'
     @tagging = Tagging.create! record: @record, tag: @tag
   end
@@ -68,7 +68,7 @@ RSpec.describe "Taggings", type: :request do
     it '正常获取 taggings 会分页，一页最多 10 个' do
       sign_in
       (1..11).each do
-        record = Record.create! amount: 100, category: 'outgoings', notes: '吃饭', user: @user
+        record = create(:record, user: @user)
         tag = Tag.create! name: '娱乐'
         Tagging.create! record: record, tag: tag
       end

@@ -13,7 +13,7 @@ RSpec.describe Tagging, type: :model do
   end
   it '可以创建 tagging' do
     tag = Tag.create name: '娱乐'
-    record = Record.create amount: 100, category: 'outgoings', notes: '吃饭', user: @user
+    record = create(:record, user: @user)
     tagging = Tagging.create tag: tag, record: record
 
     expect(tagging.errors.empty?).to be true
@@ -24,8 +24,8 @@ RSpec.describe Tagging, type: :model do
   it '可以使用 tags 和 records 创建 tagging' do
     tag1 = Tag.create name: '娱乐'
     tag2 = Tag.create name: '娱乐'
-    record1 = Record.create amount: 100, category: 'outgoings', notes: '吃饭', user: @user
-    record2 = Record.create amount: 100, category: 'outgoings', notes: '吃饭', user: @user
+    record1 = create(:record, user: @user)
+    record2 = create(:record, user: @user)
     Tagging.create tag: tag1, record: record1
     Tagging.create tag: tag1, record: record2
     Tagging.create tag: tag2, record: record1

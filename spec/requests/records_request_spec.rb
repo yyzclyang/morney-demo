@@ -37,7 +37,7 @@ RSpec.describe "Records", type: :request do
 
   context 'destroy' do
     before :each do
-      @record = Record.create! amount: 1000, category: 'outgoings', user: @user
+      @record = create(:record, user: @user)
     end
     it '未登录前不能删除 record' do
       delete "/records/#{@record.id}"
@@ -67,7 +67,7 @@ RSpec.describe "Records", type: :request do
     it '正常获取 records 会分页，一页最多 10 个' do
       sign_in
       (1..11).each do
-        Record.create! amount: 1000, category: 'outgoings', user: @user
+        create(:record, user: @user)
       end
       get "/records"
 
@@ -79,7 +79,7 @@ RSpec.describe "Records", type: :request do
 
   context 'show' do
     before :each do
-      @record = Record.create! amount: 1000, category: 'outgoings', user: @user
+      @record = create(:record, user: @user)
     end
     it '未登录前不能获取 record' do
       get "/records/#{@record.id}"
@@ -102,7 +102,7 @@ RSpec.describe "Records", type: :request do
 
   context 'update' do
     before :each do
-      @record = Record.create! amount: 1000, category: 'outgoings', user: @user
+      @record = create(:record, user: @user)
     end
     it '未登录前不能更新 record' do
       patch "/records/#{@record.id}", params: {amount: 99}
