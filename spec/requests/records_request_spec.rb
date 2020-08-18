@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Records", type: :request do
   before :each do
-    @user = User.create!(email: '1234@qq.com', password: '123456', password_confirmation: '123456')
+    @user = create(:user)
   end
   context 'create' do
     it '未登录前不可以创建 record' do

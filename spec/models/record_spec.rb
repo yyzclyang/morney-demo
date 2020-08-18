@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Record, type: :model do
   before :each do
-    @user = User.create email: '1234@qq.com', password: '123456', password_confirmation: '123456'
+    @user = create(:user)
   end
   it '可以创建 record' do
     record = Record.create amount: 100, category: 'outgoings', notes: '吃饭', user: @user

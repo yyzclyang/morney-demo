@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Session, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
   before :each do
-    User.create! email: '1234@qq.com', password: '123456', password_confirmation: '123456'
+    create(:user)
   end
   it '可以创建 session' do
     session = Session.new email: '1234@qq.com', password: '123456'

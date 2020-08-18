@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Tagging, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
   before :each do
-    @user = User.create email: '1234@qq.com', password: '123456', password_confirmation: '123456'
+    @user = create(:user)
   end
   it '创建 tagging 必须有 record 和 tag' do
     tagging = Tagging.create
