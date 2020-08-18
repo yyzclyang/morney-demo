@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Tagging, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
   before :each do
     @user = create(:user)
   end
@@ -12,7 +11,7 @@ RSpec.describe Tagging, type: :model do
     expect(tagging.errors.details[:tag]).to include({:error => :blank})
   end
   it '可以创建 tagging' do
-    tag = create(:tag)
+    tag = create(:tag, user: @user)
     record = create(:record, user: @user)
     tagging = Tagging.create tag: tag, record: record
 
@@ -22,8 +21,8 @@ RSpec.describe Tagging, type: :model do
     expect(record.tags.first.id).to eq tag.id
   end
   it '可以使用 tags 和 records 创建 tagging' do
-    tag1 = create(:tag)
-    tag2 = create(:tag)
+    tag1 = create(:tag, user: @user)
+    tag2 = create(:tag, user: @user)
     record1 = create(:record, user: @user)
     record2 = create(:record, user: @user)
     Tagging.create tag: tag1, record: record1

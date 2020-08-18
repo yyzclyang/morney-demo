@@ -2,7 +2,8 @@ require 'rails_helper'
 require 'rspec_api_documentation/dsl'
 
 resource "Tags" do
-  let(:tag) { create(:tag) }
+  let(:user) { create(:user) }
+  let(:tag) { create(:tag, user: user) }
 
   post "/tags" do
     parameter :name, '标签名', type: :string, required: true
@@ -29,7 +30,7 @@ resource "Tags" do
     let(:page) { 1 }
     example "获取所有标签" do
       (1..11).each do
-        create(:tag)
+        create(:tag, user: user)
       end
       sign_in
       do_request

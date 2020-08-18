@@ -3,7 +3,7 @@ require 'rspec_api_documentation/dsl'
 
 resource "Records" do
   let(:user) { create(:user) }
-  let(:record) { create(:record) }
+  let(:record) { create(:record, user: user) }
   let(:id) { record.id }
 
   post "/records" do

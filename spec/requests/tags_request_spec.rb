@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Tags", type: :request do
+  before :each do
+    @user = create(:user)
+  end
   context 'create' do
     it '未登录前不可以创建 tag' do
       post '/tags', params: {name: '娱乐'}
@@ -34,7 +37,7 @@ RSpec.describe "Tags", type: :request do
 
   context 'destroy' do
     it '未登录前不能删除 tag' do
-      tag = create(:tag)
+      tag = create(:tag, user: @user)
       delete "/tags/#{tag.id}"
 
       expect(response.status).to eq 401
@@ -47,7 +50,7 @@ RSpec.describe "Tags", type: :request do
     end
     it '正常删除 tag' do
       sign_in
-      tag = create(:tag)
+      tag = create(:tag, user: @user)
       delete "/tags/#{tag.id}"
 
       expect(response.status).to eq 200
@@ -69,7 +72,7 @@ RSpec.describe "Tags", type: :request do
     it '正常获取 tags 会分页，一页最多 10 个' do
       sign_in
       (1..11).each do
-        create(:tag)
+        create(:tag, user: @user)
       end
       get "/tags"
 
@@ -81,14 +84,14 @@ RSpec.describe "Tags", type: :request do
 
   context 'show' do
     it '未登录前不能获取 tag' do
-      tag = create(:tag)
+      tag = create(:tag, user: @user)
       get "/tags/#{tag.id}"
 
       expect(response.status).to eq 401
     end
     it '能获取 tag' do
       sign_in
-      tag = create(:tag)
+      tag = create(:tag, user: @user)
       get "/tags/#{tag.id}"
 
       expect(response.status).to eq 200
@@ -103,14 +106,14 @@ RSpec.describe "Tags", type: :request do
 
   context 'update' do
     it '未登录前不能更新 tag' do
-      tag = create(:tag)
+      tag = create(:tag, user: @user)
       patch "/tags/#{tag.id}", params: {name: '交通'}
 
       expect(response.status).to eq 401
     end
     it '能更新 tag' do
       sign_in
-      tag = create(:tag)
+      tag = create(:tag, user: @user)
       patch "/tags/#{tag.id}", params: {name: '交通'}
 
       response_body = JSON.parse response.body

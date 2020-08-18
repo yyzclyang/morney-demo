@@ -3,8 +3,8 @@ require 'rspec_api_documentation/dsl'
 
 resource "Taggings" do
   let(:user) { create(:user) }
-  let(:record) { create(:record) }
-  let(:tag) { create(:tag) }
+  let(:record) { create(:record, user: user) }
+  let(:tag) { create(:tag, user: user) }
   let(:tagging) { create(:tagging, tag: tag, record: record) }
   let(:id) { tagging.id }
 
@@ -34,7 +34,7 @@ resource "Taggings" do
     example "获取所有标记" do
       (1..11).each do
         record = create(:record, user: user)
-        tag = create(:tag)
+        tag = create(:tag, user: user)
         create(:tagging, tag: tag, record: record)
       end
       sign_in
