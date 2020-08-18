@@ -41,6 +41,8 @@ zh-CN:
             name:
               blank: 标签名不能为空
               to_long: 标签名不能超过 20 个字符
+              user:
+                required: 用户不能为空
         tagging:
           attributes:
             record:
